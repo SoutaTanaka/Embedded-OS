@@ -34,7 +34,7 @@ SECTIONS
         _erodata = . ;
     } > rom
 
-    . = 0xffbf20;
+/*    . = 0xffbf20; */
 
     .data : {
         _data_start = . ;
