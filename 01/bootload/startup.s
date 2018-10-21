@@ -4,7 +4,7 @@
     #.type _start,@function
 
     _start:
-        mov.l   #_stack,sp
+        mov.l   #0xffff00,sp 
         jsr     @_main
 
     1:
