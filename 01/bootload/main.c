@@ -17,6 +17,7 @@ int global_data = 0x10;
 int global_bss;
 static int static_data = 0x20;
 static int static_bss;
+int i;
 
 static void printval(void){
     puts("global_data = "); putxval(global_data, 0); puts("\n");
@@ -30,7 +31,7 @@ int main(void){
     puts("Hello, World!\n");
 
     printval();
-    puts("overweite variables.\n");
+    puts("overwrite variables.\n");
 
     global_data = 0x20;
     global_bss  = 0x30;
@@ -39,9 +40,8 @@ int main(void){
 
     printval();
 
-    while(1){
-    }
-    
+   
+    while(1);
     return 0;
 }
 
