@@ -9,7 +9,8 @@ MEMORY
     rom(rx)         : o = 0x000100, l = 0x07ff00
 
     ramall(rwx)     : o = 0xffbf20, l = 0x004000
-    data(rwx)      : o = 0xfffc20, l = 0x000300
+    buffer(rwx)     : o = 0xffdf20, l = 0x001d00
+    data(rwx)       : o = 0xfffc20, l = 0x000300
     stack(rw)       : o = 0xffff00, l = 0x000000
 }
 
@@ -34,7 +35,11 @@ SECTIONS
         _erodata = . ;
     } > rom
 
-/*    . = 0xffbf20; */
+    .buffer : {
+        _buffer_start = . ;
+    } > buffer
+
+    . = 0xffbf20; 
 
     .data : {
         _data_start = . ;

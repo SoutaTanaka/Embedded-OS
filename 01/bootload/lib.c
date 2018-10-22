@@ -2,6 +2,25 @@
 #include "serial.h"
 #include "lib.h"
 
+unsigned char getc(void){
+    unsigned char c = serial_recv_byte(SERIAL_DEFAULT_DEVICE);
+    c = (c == '\r') ? '\n' : c;
+    putc(c);
+    return c;
+}
+
+int gets(unsigned char *buf){
+    int i = 0;
+    unsigned char c;
+    do {
+        c = getc();
+        if (c == '\n'){
+            c = '\0';
+        }
+        buf[i++] = c;
+    }while (c);
+    return i - 1;
+}
 
 void *memset(void *b, int c, long len){
     char *p;
