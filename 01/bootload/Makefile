@@ -18,7 +18,7 @@ H8WRITE = ../../tools/h8write/h8write
 H8WRITE_SERDEV = /dev/ttyUSB0
 
 OBJS = vector.o startup.o main.o
-OBJS += lib.o serial.o xmodem.o
+OBJS += lib.o serial.o xmodem.o elf.o
 
 TARGET = kzload
 
@@ -59,7 +59,7 @@ clean :
 				rm -f $(OBJS) $(TARGET) $(TARGET).elf $(TARGET).mot
 
 connect : 		
-				sudo chmod 777 /dev/ttyUSB0; minicom -o
+				sudo chmod 777 /dev/ttyUSB0; sudo minicom -o
 
 ccic :
 				make clean; make all; make image; make write; make connect

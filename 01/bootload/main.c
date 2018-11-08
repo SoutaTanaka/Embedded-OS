@@ -2,6 +2,7 @@
 #include "serial.h"
 #include "lib.h"
 #include "xmodem.h"
+#include "elf.h"
 
 static int init(void){
     extern int erodata, data_start, edata, bss_start, ebss;
@@ -18,7 +19,7 @@ static int dump(char *buf, long size){
     long i;
 
     if(size < 0){
-        puts("no data. \n");
+        puts("no data.\n");
         return -1;
     }
 
@@ -70,6 +71,8 @@ int main(void){
             putxval(size, 0);
             puts("\n");
             dump(loadbuf, size);
+        }else if(!strcmp(buf, "run")){
+            elf_load(loadbuf);
         }else{
             puts("unknowon.\n");
         }
