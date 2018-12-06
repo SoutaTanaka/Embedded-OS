@@ -15,7 +15,8 @@ STRIP	= $(BINDIR)/$(ADDNAME)strip
 
 
 OBJS = startup.o main.o
-OBJS += lib.o serial.o
+OBJS += lib.o serial.o interrupt.o
+
 
 TARGET = kozos
 
@@ -30,6 +31,7 @@ LFLAGS = -static -T ld.scr -L.
 
 .SUFFIXES: .c .o
 .SUFFIXES: .s .o
+.SUFFIXES: .S .o
 
 all :			$(TARGET)
 
@@ -42,6 +44,9 @@ $(TARGET) :		$(OBJS)
 				$(CC) -c $(CFLAGS) $<
 
 .s.o :			$<
+				$(CC) -c $(CFLAGS) $<
+
+.S.o :			$<
 				$(CC) -c $(CFLAGS) $<
 
 clean :
