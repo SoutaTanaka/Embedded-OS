@@ -71,5 +71,11 @@ static int putcurrent(void){
     return 0;
 }
 
+static void thread_end(void){
+    kz_exit();
+}
+
+static void thread_init
+
 
 
